@@ -51,7 +51,7 @@ namespace Serilog.Sinks.Syslog
             this.enableKeepAlive = config.KeepAlive;
 
             this.secureProtocols = config.SecureProtocols;
-            this.useTls = config.SecureProtocols != SslProtocols.None;
+            this.useTls = config.UseTLS;
             this.certValidationCallback = config.CertValidationCallback;
             this.checkCertificateRevocation = config.CheckCertificateRevocation;
             this.tlsAuthenticationTimeout = config.TlsAuthenticationTimeout;

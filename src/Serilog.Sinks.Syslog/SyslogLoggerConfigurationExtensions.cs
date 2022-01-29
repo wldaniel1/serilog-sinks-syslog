@@ -160,7 +160,7 @@ namespace Serilog
             string messageIdPropertyName = Rfc5424Formatter.DefaultMessageIdPropertyName,
             PeriodicBatchingSinkOptions batchConfig = null,
             string sourceHost = null,
-            Func<LogEventLevel, Severity> severityMapping = null)
+            Func<LogEventLevel, Severity> severityMapping = null, bool? useTLS = null)
         {
             var formatter = GetFormatter(format, appName, facility, outputTemplate, messageIdPropertyName, sourceHost, severityMapping);
 
@@ -172,7 +172,8 @@ namespace Serilog
                 Framer = new MessageFramer(framingType),
                 SecureProtocols = secureProtocols,
                 CertProvider = certProvider,
-                CertValidationCallback = certValidationCallback
+                CertValidationCallback = certValidationCallback,
+                UseTLS = useTLS ?? (secureProtocols != SslProtocols.None),
             };
 
             batchConfig ??= DefaultBatchOptions;

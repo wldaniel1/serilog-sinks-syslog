@@ -52,6 +52,8 @@ namespace Serilog.Sinks.Syslog
         /// </summary>
         public SslProtocols SecureProtocols { get; set; } = SslProtocols.None;
 
+        public bool UseTLS { get; set; } = false;
+
         /// <summary>
         /// When SecureProtocols is not None, CertProvider can be used to present a client certificate
         /// to the syslog server. Leave as null if no client certificate is required
